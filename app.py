@@ -9,7 +9,7 @@ if not os.path.exists(TRS_LOCATION):
     raise FileNotFoundError(f"TRS file not found at {TRS_LOCATION}")
 TRS = json.load(open(TRS_LOCATION, "r"))
 GPG_HOME = os.environ.get("GPG_HOME", "/home/ubuntu/.gnupg")
-GPG_FINGERPRINT = os.environ.get("GPG_FINGERPRITN", TRS["trov:gpgFingerprint"])
+GPG_FINGERPRINT = os.environ.get("GPG_FINGERPRINT", TRS["trov:gpgFingerprint"])
 try:
     gpg = gnupg.GPG(gnupghome=GPG_HOME)
     GPG_KEYID = gpg.list_keys().key_map[GPG_FINGERPRINT]["keyid"]
